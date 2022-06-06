@@ -16,6 +16,7 @@ import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import DownloadIcon from '@mui/icons-material/Download';
 import PrintIcon from '@mui/icons-material/Print';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 // MUI Material
 import MuiAppBar from '@mui/material/AppBar';
@@ -33,6 +34,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  TextField,
 } from '@mui/material';
 import A4Paper from './components/A4Paper.components';
 
@@ -90,7 +92,7 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 1000,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -186,6 +188,12 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Experience"} />
             </ListItem>
+            <ListItem button key={"Certifications & Awards"}>
+              <ListItemIcon>
+                <EmojiEventsIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Certifications & Awards"} />
+            </ListItem>
             <ListItem button key={"Skills"}>
               <ListItemIcon>
                 <BuildIcon />
@@ -251,9 +259,18 @@ function MyApp() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Personal Details
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <TextField label="Image URL" value={"https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Name" value={"Giannis Antetokoumpo Jay-Jay Okocha"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Role" value={"Content Creator"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Phone Number" value={"+6 011-1122 3456"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Email" value={"jayjayokocha@arsenal.com"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Location" value={"Jalan Tandok, KL"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
+          <TextField label="Background" multiline rows={2} variant="standard" style={{ width: '100%', marginTop: 20 }}
+            value={"Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. "}
+          />
+          <TextField label="Career Objective" multiline rows={2} variant="standard" style={{ width: '100%', marginTop: 20 }}
+            value={"Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector."}
+          />
         </Box>
       </Modal>
     </div>

@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { Container, Typography, useTheme } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
 import BorderedSubtitle from './BorderedSubtitle.components';
+
+// Icon
+import PhoneIcon from '@mui/icons-material/Phone';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import PlaceIcon from '@mui/icons-material/Place';
 
 function A4Paper(props) {
     const theme = useTheme();
@@ -44,7 +49,7 @@ function A4Paper(props) {
                                 fontWeight={'bold'}
                                 textAlign={'center'}
                             >
-                                {"GIANNIS ANTETOKOUMPO JAY-JAY OKOCHA"}
+                                {"Giannis Antetokoumpo Jay-Jay Okocha"}
                             </Typography>
                             <Typography
                                 variant="p"
@@ -57,12 +62,33 @@ function A4Paper(props) {
                         </Grid>
                         <BorderedSubtitle
                             background={'#6b705c'}
-                            title="BACKGROUND"
+                            title="EDUCATION"
                             marginTop="20px"
                             marginBottom="10px"
+                            color={'white'}
                         />
                         <Typography variant="p" component="p" textAlign={'justify'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                        </Typography>
+                        <BorderedSubtitle
+                            background={'#6b705c'}
+                            title="EXPERIENCE"
+                            marginTop="20px"
+                            marginBottom="10px"
+                            color={'white'}
+                        />
+                        <Typography variant="p" component="p" textAlign={'justify'}>
+                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                        </Typography>
+                        <BorderedSubtitle
+                            background={'#6b705c'}
+                            title="CERTIFICATIONS & AWARDS"
+                            marginTop="20px"
+                            marginBottom="10px"
+                            color={'white'}
+                        />
+                        <Typography variant="p" component="p" textAlign={'justify'}>
+                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
                         </Typography>
                     </Grid>
                     <Grid item xs={4}
@@ -72,16 +98,40 @@ function A4Paper(props) {
                             // textAlign: 'center',
                         }}
                     >
-                        <Avatar alt="Remy Sharp" src={require('../assets/images/08.jpg')} sx={{ height: 225, width: 225, }} />
+                        <Avatar alt="Remy Sharp" src={"https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg"} sx={{ height: 225, width: 225, }} />
+                        <Grid container direction="row" alignItems="right" style={{ paddingTop: 10 }}>
+                            <Grid item style={{ marginRight: 10 }}>
+                                <PhoneIcon />
+                            </Grid>
+                            <Grid item style={{ color: "white" }}>
+                                {"+6 011-1122 3456"}
+                            </Grid>
+                        </Grid>
+                        <Grid container direction="row" alignItems="right">
+                            <Grid item style={{ marginRight: 10 }}>
+                                <AlternateEmailIcon />
+                            </Grid>
+                            <Grid item style={{ color: "white" }}>
+                                {"jayjayokocha@arsenal.com"}
+                            </Grid>
+                        </Grid>
+                        <Grid container direction="row" alignItems="right">
+                            <Grid item style={{ marginRight: 10 }}>
+                                <PlaceIcon />
+                            </Grid>
+                            <Grid item style={{ color: "white" }}>
+                                {"Jalan Tandok, KL"}
+                            </Grid>
+                        </Grid>
                         <BorderedSubtitle title="BACKGROUND" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                            {"Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. "}
                         </Typography>
-                        <BorderedSubtitle title="ACHIEVEMENT" marginTop="20px" marginBottom="10px" />
+                        <BorderedSubtitle title="OBJECTIVE" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                            {"Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector."}
                         </Typography>
-                        <BorderedSubtitle title="CONTACT" marginTop="20px" marginBottom="10px" />
+                        <BorderedSubtitle title="SKILLS" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
                             {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
                         </Typography>
