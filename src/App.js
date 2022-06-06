@@ -37,6 +37,7 @@ import {
   TextField,
 } from '@mui/material';
 import A4Paper from './components/A4Paper.components';
+import RichTextEditor from './components/RichTextEditor';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -117,9 +118,15 @@ function MyApp() {
   };
 
   // Modal state
+  // Personal Modal
   const [openPersonalModal, setOpenPersonalModal] = React.useState(false);
   const handleOpenPersonalModal = () => setOpenPersonalModal(true);
   const handleClosePersonalModal = () => setOpenPersonalModal(false);
+
+  // Education Modal
+  const [openEducationModal, setOpenEducationModal] = React.useState(false);
+  const handleOpenEducationModal = () => setOpenEducationModal(true);
+  const handleCloseEducationModal = () => setOpenEducationModal(false);
 
   return (
     <div>
@@ -176,7 +183,7 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Personal Details"} />
             </ListItem>
-            <ListItem button key={"Education"}>
+            <ListItem button onClick={handleOpenEducationModal} key={"Education"}>
               <ListItemIcon>
                 <SchoolIcon />
               </ListItemIcon>
@@ -271,6 +278,20 @@ function MyApp() {
           <TextField label="Career Objective" multiline rows={2} variant="standard" style={{ width: '100%', marginTop: 20 }}
             value={"Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector."}
           />
+        </Box>
+      </Modal>
+      {/* Education Modal */}
+      <Modal
+        open={openEducationModal}
+        onClose={handleCloseEducationModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Education Details
+          </Typography>
+          <RichTextEditor />
         </Box>
       </Modal>
     </div>
