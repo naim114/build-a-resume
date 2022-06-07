@@ -112,7 +112,7 @@ function A4Paper(props) {
                                 <AlternateEmailIcon />
                             </Grid>
                             <Grid item style={{ color: "white" }}>
-                                {"jayjayokocha@arsenal.com"}
+                                {"jayokocha@arsenal.com"}
                             </Grid>
                         </Grid>
                         <Grid container direction="row" alignItems="right">
@@ -133,7 +133,7 @@ function A4Paper(props) {
                         </Typography>
                         <BorderedSubtitle title="SKILLS" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
+                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
                         </Typography>
                     </Grid>
                 </Grid>
