@@ -22,7 +22,6 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import MuiAppBar from '@mui/material/AppBar';
 import {
   Container,
-  Modal,
   IconButton,
   Box,
   Drawer,
@@ -34,10 +33,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  TextField,
 } from '@mui/material';
 import A4Paper from './components/A4Paper.components';
-import RichTextEditor from './components/RichTextEditor';
+import PersonalModal from './components/modal/PersonalModal';
+import EducationModal from './components/modal/EducationModal';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -88,18 +87,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 1000,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 function MyApp() {
   const theme = useTheme();
 
@@ -116,6 +103,16 @@ function MyApp() {
   const handleMainDrawerClose = () => {
     setOpenMain(false);
   };
+
+  // Default Text
+  const [txtImageURL, setTxtImageURL] = React.useState("https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg");
+  const [txtName, setTxtName] = React.useState("Giannis Antetokoumpo Jay-Jay Okocha");
+  const [txtRole, setTxtRole] = React.useState("Content Creator");
+  const [txtPhone, setTxtPhone] = React.useState("+6 011-1122 3456");
+  const [txtEmail, setTxtEmail] = React.useState("jayjayokocha@arsenal.com");
+  const [txtLocation, setTxtLocation] = React.useState("Jalan Tandok, KL");
+  const [txtBackground, setTxtBackground] = React.useState("Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. ");
+  const [txtObjective, setTxtObjective] = React.useState("Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector.");
 
   // Modal state
   // Personal Modal
@@ -251,49 +248,45 @@ function MyApp() {
               justifyContent: 'center',
             }}
           >
-            <A4Paper />
+            <A4Paper
+              imageURL={txtImageURL}
+              name={txtName}
+              role={txtRole}
+              phone={txtPhone}
+              email={txtEmail}
+              location={txtLocation}
+              background={txtBackground}
+              objective={txtObjective}
+            />
           </Container>
         </Main>
       </Box>
       {/* Personal Details Modal */}
-      <Modal
+      <PersonalModal
         open={openPersonalModal}
         onClose={handleClosePersonalModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Personal Details
-          </Typography>
-          <TextField label="Image URL" value={"https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Name" value={"Giannis Antetokoumpo Jay-Jay Okocha"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Role" value={"Content Creator"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Phone Number" value={"+6 011-1122 3456"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Email" value={"jayjayokocha@arsenal.com"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Location" value={"Jalan Tandok, KL"} variant="standard" style={{ width: '100%', marginTop: 20 }} />
-          <TextField label="Background" multiline rows={2} variant="standard" style={{ width: '100%', marginTop: 20 }}
-            value={"Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. "}
-          />
-          <TextField label="Career Objective" multiline rows={2} variant="standard" style={{ width: '100%', marginTop: 20 }}
-            value={"Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector."}
-          />
-        </Box>
-      </Modal>
+        imageURL={txtImageURL}
+        name={txtName}
+        role={txtRole}
+        phone={txtPhone}
+        email={txtEmail}
+        location={txtLocation}
+        background={txtBackground}
+        objective={txtObjective}
+        onImageURLEdit={(e) => { setTxtImageURL(e.target.value) }}
+        onNameEdit={(e) => { setTxtName(e.target.value) }}
+        onRoleEdit={(e) => { setTxtRole(e.target.value) }}
+        onPhoneEdit={(e) => { setTxtPhone(e.target.value) }}
+        onEmailEdit={(e) => { setTxtEmail(e.target.value) }}
+        onLocationEdit={(e) => { setTxtLocation(e.target.value) }}
+        onBackgroundEdit={(e) => { setTxtBackground(e.target.value) }}
+        onObjectiveEdit={(e) => { setTxtObjective(e.target.value) }}
+      />
       {/* Education Modal */}
-      <Modal
+      <EducationModal
         open={openEducationModal}
         onClose={handleCloseEducationModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Education Details
-          </Typography>
-          <RichTextEditor />
-        </Box>
-      </Modal>
+      />
     </div>
   );
 }
