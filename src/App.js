@@ -114,6 +114,23 @@ function MyApp() {
   const [txtBackground, setTxtBackground] = React.useState("Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. ");
   const [txtObjective, setTxtObjective] = React.useState("Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector.");
 
+  const eduLists = [
+    {
+      institute: "MIT, University",
+      study: "Diploma in Cryptocurrency",
+      startDate: "2016",
+      endDate: "2020",
+      score: "3.40 CGPA",
+    },
+    {
+      institute: "College Al-Gustoo",
+      study: "Degree in Food & Beverages",
+      startDate: "2020",
+      endDate: "2021",
+      score: "2.10 CGPA",
+    }
+  ];
+
   // Modal state
   // Personal Modal
   const [openPersonalModal, setOpenPersonalModal] = React.useState(false);
@@ -286,6 +303,7 @@ function MyApp() {
       <EducationModal
         open={openEducationModal}
         onClose={handleCloseEducationModal}
+        list={eduLists}
       />
     </div>
   );

@@ -5,14 +5,15 @@ import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import { FormatUnderlined } from "@mui/icons-material";
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 
+var stateFromHTML = require('draft-js-import-html').stateFromHTML;
 
 class RichTextEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            editorState: EditorState.createEmpty()
+            editorState: EditorState.createWithContent(stateFromHTML(props.initialValue))
         };
     }
 
@@ -20,6 +21,8 @@ class RichTextEditor extends React.Component {
         this.setState({
             editorState
         });
+        // console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+        // this.props.parentCallback(convertToRaw(this.state.editorState.getCurrentContent()));
     };
 
     handleKeyCommand = command => {
@@ -49,9 +52,10 @@ class RichTextEditor extends React.Component {
             RichUtils.toggleInlineStyle(this.state.editorState, "ITALIC")
         );
     };
+
     render() {
         return (
-            <div
+            <form
                 style={{
                     padding: '1em',
                     margin: "1em",
@@ -102,7 +106,7 @@ class RichTextEditor extends React.Component {
                         onChange={this.onChange}
                     />
                 </div>
-            </div>
+            </form>
         );
     }
 }

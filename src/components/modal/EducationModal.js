@@ -4,9 +4,11 @@ import {
     Box,
     Typography,
 } from '@mui/material';
-import RichTextEditor from '../RichTextEditor';
+import EducationNestedList from '../nestedList/EducationNestedList';
 
 function EducationModal(props) {
+    const lists = props.list;
+
     const modalStyle = {
         position: 'absolute',
         top: '50%',
@@ -30,7 +32,7 @@ function EducationModal(props) {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Education Details
                 </Typography>
-                <RichTextEditor />
+                <EducationNestedList list={lists} />
             </Box>
         </Modal>
     );

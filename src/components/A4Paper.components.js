@@ -106,7 +106,6 @@ function A4Paper(props) {
                             </Grid>
                             <Grid item style={{ color: "white" }}>
                                 {props.phone}
-                                {/* {"+6 011-1122 3456"} */}
                             </Grid>
                         </Grid>
                         <Grid container direction="row" alignItems="right">
@@ -115,7 +114,6 @@ function A4Paper(props) {
                             </Grid>
                             <Grid item style={{ color: "white" }}>
                                 {props.email}
-                                {/* {"jayokocha@arsenal.com"} */}
                             </Grid>
                         </Grid>
                         <Grid container direction="row" alignItems="right">
@@ -124,18 +122,15 @@ function A4Paper(props) {
                             </Grid>
                             <Grid item style={{ color: "white" }}>
                                 {props.location}
-                                {/* {"Jalan Tandok, KL"} */}
                             </Grid>
                         </Grid>
                         <BorderedSubtitle title="BACKGROUND" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
                             {props.background}
-                            {/* {"Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. "} */}
                         </Typography>
                         <BorderedSubtitle title="OBJECTIVE" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
                             {props.objective}
-                            {/* {"Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector."} */}
                         </Typography>
                         <BorderedSubtitle title="SKILLS" marginTop="20px" marginBottom="10px" />
                         <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
