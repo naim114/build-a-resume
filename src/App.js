@@ -138,6 +138,25 @@ function MyApp() {
     alert("Deleted " + eduList[index]["institute"]);
   };
 
+  // edit item from education
+  const editItemEdu = (index, name, value) => {
+    console.log("Editing " + eduList[index]["institute"]);
+    const newList = eduList.map((k, v) => {
+      if (v === index) {
+        const updatedItem = {
+          ...k,
+        };
+
+        updatedItem[name] = value;
+
+        return updatedItem;
+      }
+
+      return k;
+    });
+    setEduList(newList);
+  };
+
   // Modal state
   // Personal Modal
   const [openPersonalModal, setOpenPersonalModal] = React.useState(false);
@@ -312,6 +331,7 @@ function MyApp() {
         onClose={handleCloseEducationModal}
         list={eduList}
         onDelete={(index) => { removeItemEdu(index) }}
+        onChange={(index, name, value) => { editItemEdu(index, name, value) }}
         onAdd={() => {
           setEduList((prevList) => prevList.concat({
             institute: "MIT, University",

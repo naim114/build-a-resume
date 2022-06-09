@@ -27,19 +27,19 @@ function EducationNestedList(props) {
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                     <ListItem>
-                        <TextField label="Institute" value={props.institute} variant="standard" style={{ width: '100%' }} />
+                        <TextField name="institute" onChange={props.onChange} label="Institute" value={props.institute} variant="standard" style={{ width: '100%' }} />
                     </ListItem>
                     <ListItem>
-                        <TextField label="Study Area/Type" value={props.study} variant="standard" style={{ width: '100%' }} />
+                        <TextField name="study" onChange={props.onChange} label="Study Area/Type" value={props.study} variant="standard" style={{ width: '100%' }} />
                     </ListItem>
                     <ListItem>
-                        <TextField label="Start Date" value={props.startDate} variant="standard" style={{ width: '100%' }} />
+                        <TextField name="startDate" onChange={props.onChange} label="Start Date" value={props.startDate} variant="standard" style={{ width: '100%' }} />
                     </ListItem>
                     <ListItem>
-                        <TextField label="End Date" value={props.endDate} variant="standard" style={{ width: '100%' }} />
+                        <TextField name="endDate" onChange={props.onChange} label="End Date" value={props.endDate} variant="standard" style={{ width: '100%' }} />
                     </ListItem>
                     <ListItem>
-                        <TextField label="Score" value={props.score} variant="standard" style={{ width: '100%' }} />
+                        <TextField name="score" onChange={props.onChange} label="Score" value={props.score} variant="standard" style={{ width: '100%' }} />
                     </ListItem>
                 </List>
             </Collapse>

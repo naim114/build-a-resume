@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Modal,
     Box,
@@ -27,6 +27,10 @@ function EducationModal(props) {
 
     const removeItem = (index) => {
         props.onDelete(index);
+    };
+
+    const editItem = (index, name, value) => {
+        props.onChange(index, name, value);
     };
 
     return (
@@ -59,6 +63,7 @@ function EducationModal(props) {
                                     endDate={key["endDate"]}
                                     score={key["score"]}
                                     onDelete={() => removeItem(value)}
+                                    onChange={(e) => editItem(value, e.target.name, e.target.value)}
                                 />
                             </div>
                         );
@@ -70,63 +75,3 @@ function EducationModal(props) {
 }
 
 export default EducationModal;
-
-
-// export default class EducationModal extends Component {
-
-//     handleDelete = (index) => {
-//         console.log(index.target.value);
-//         this.props.onDelete(index);
-//     }
-
-//     render() {
-//         const lists = this.props.list;
-
-//         const modalStyle = {
-//             position: 'absolute',
-//             top: '50%',
-//             left: '50%',
-//             transform: 'translate(-50%, -50%)',
-//             width: 1000,
-//             bgcolor: 'background.paper',
-//             border: '2px solid #000',
-//             boxShadow: 24,
-//             p: 4,
-//         };
-
-//         return (
-//             <Modal
-//                 open={this.props.open}
-//                 onClose={this.props.onClose}
-//                 aria-labelledby="modal-modal-title"
-//                 aria-describedby="modal-modal-description"
-//             >
-//                 <Box sx={modalStyle}>
-//                     <Typography id="modal-modal-title" variant="h6" component="h2">
-//                         Education Details
-//                     </Typography>
-//                     <List
-//                         sx={{ width: '100%', bgcolor: 'background.paper' }}
-//                         component="nav"
-//                         aria-labelledby="nested-list-subheader"
-//                     >
-//                         {lists.map((key, value) => {
-//                             return (
-//                                 <div key={value}>
-//                                     <EducationNestedList
-//                                         institute={key["institute"]}
-//                                         study={key["study"]}
-//                                         startDate={key["startDate"]}
-//                                         endDate={key["endDate"]}
-//                                         score={key["score"]}
-//                                         onDelete={this.handleDelete}
-//                                     />
-//                                 </div>
-//                             );
-//                         })}
-//                     </List>
-//                 </Box>
-//             </Modal>
-//         )
-//     }
-// }
