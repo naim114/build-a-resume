@@ -300,6 +300,7 @@ function MyApp() {
               location={txtLocation}
               background={txtBackground}
               objective={txtObjective}
+              eduList={eduList}
             />
           </Container>
         </Main>

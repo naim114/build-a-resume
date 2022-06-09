@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, useTheme } from '@mui/material';
+import { List, Typography, useTheme } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
@@ -9,9 +9,12 @@ import BorderedSubtitle from './BorderedSubtitle.components';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PlaceIcon from '@mui/icons-material/Place';
+import EducationListItem from './EducationListItem';
 
 function A4Paper(props) {
     const theme = useTheme();
+
+    const eduList = props.eduList;
 
     return (
         <div>
@@ -49,7 +52,6 @@ function A4Paper(props) {
                                 fontWeight={'bold'}
                                 textAlign={'center'}
                             >
-                                {/* {"Giannis Antetokoumpo Jay-Jay Okocha"} */}
                                 {props.name}
                             </Typography>
                             <Typography
@@ -68,9 +70,25 @@ function A4Paper(props) {
                             marginBottom="10px"
                             color={'white'}
                         />
-                        <Typography variant="p" component="p" textAlign={'justify'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
-                        </Typography>
+                        <List style={{ padding: 0 }}>
+                            {eduList.map((key, value) => {
+                                // console.log(value + " " + eduList.length);
+
+                                return (
+                                    <div key={value}>
+                                        <EducationListItem
+                                            institute={key['institute']}
+                                            study={key['study']}
+                                            startDate={key['startDate']}
+                                            endDate={key['endDate']}
+                                            score={key['score']}
+                                            isLastArray={(value + 1) == eduList.length}
+                                        />
+
+                                    </div>
+                                );
+                            })}
+                        </List>
                         <BorderedSubtitle
                             background={'#6b705c'}
                             title="EXPERIENCE"
