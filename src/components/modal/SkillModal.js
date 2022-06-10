@@ -6,11 +6,11 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import EducationNestedList from '../nestedList/EducationNestedList';
 import List from '@mui/material/List';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import SkillNestedList from '../nestedList/SkillNestedList';
 
-function EducationModal(props) {
+function SkillModal(props) {
     const lists = props.list;
 
     const modalStyle = {
@@ -42,7 +42,7 @@ function EducationModal(props) {
         >
             <Box sx={modalStyle}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Education
+                    Skills
                 </Typography>
                 <List
                     sx={{ width: '100%', bgcolor: 'background.paper' }}
@@ -50,18 +50,14 @@ function EducationModal(props) {
                     aria-labelledby="nested-list-subheader"
                 >
                     <ListItemButton onClick={props.onAdd} style={{ backgroundColor: '#222222', borderRadius: 5, color: 'white', fontWeight: 'bold' }}>
-                        <ListItemText primary={"Add Education"} />
+                        <ListItemText primary={"Add Skills"} />
                         <AddCircleIcon />
                     </ListItemButton>
                     {lists.map((key, value) => {
                         return (
                             <div key={value}>
-                                <EducationNestedList
-                                    institute={key["institute"]}
-                                    study={key["study"]}
-                                    startDate={key["startDate"]}
-                                    endDate={key["endDate"]}
-                                    score={key["score"]}
+                                <SkillNestedList
+                                    skill={key['skill']}
                                     onDelete={() => removeItem(value)}
                                     onChange={(e) => editItem(value, e.target.name, e.target.value)}
                                 />
@@ -74,4 +70,4 @@ function EducationModal(props) {
     );
 }
 
-export default EducationModal;
+export default SkillModal;

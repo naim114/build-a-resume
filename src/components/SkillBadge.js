@@ -1,10 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { useTheme } from '@mui/material';
 
 function SkillBadge(props) {
-    const theme = useTheme();
-
     return (
         <Button
             disabled

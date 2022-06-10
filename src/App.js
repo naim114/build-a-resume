@@ -37,6 +37,7 @@ import {
 import A4Paper from './components/A4Paper.components';
 import PersonalModal from './components/modal/PersonalModal';
 import EducationModal from './components/modal/EducationModal';
+import SkillModal from './components/modal/SkillModal';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -160,7 +161,33 @@ function MyApp() {
   };
 
   // Skills
-  const [skillList, setSkillList] = React.useState(['JavaScript', 'CSS', 'HTML', 'C++']);
+  const [skillList, setSkillList] = React.useState([{ skill: 'JavaScript' }, { skill: 'CSS' }, { skill: 'HTML' }, { skill: 'C++' }]);
+
+  // Editing item in skill
+  const editItemSkill = (index, name, value) => {
+    console.log("Editing " + skillList[index]["skill"]);
+    const newList = skillList.map((k, v) => {
+      if (v === index) {
+        const updatedItem = {
+          ...k,
+        };
+
+        updatedItem[name] = value;
+
+        return updatedItem;
+      }
+
+      return k;
+    });
+    setSkillList(newList);
+  };
+
+  // Remove item from skill
+  const removeItemSkill = (index) => {
+    console.log("Deleting " + skillList[index]["skill"]);
+    setSkillList(skillList.filter((o, i) => index !== i));
+    alert("Deleted " + skillList[index]["skill"]);
+  };
 
   // Modal state
   // Personal Modal
@@ -172,6 +199,11 @@ function MyApp() {
   const [openEducationModal, setOpenEducationModal] = React.useState(false);
   const handleOpenEducationModal = () => setOpenEducationModal(true);
   const handleCloseEducationModal = () => setOpenEducationModal(false);
+
+  // Skill Modal
+  const [openSkillModal, setOpenSkillModal] = React.useState(false);
+  const handleOpenSkillModal = () => setOpenSkillModal(true);
+  const handleCloseSkillModal = () => setOpenSkillModal(false);
 
   return (
     <div>
@@ -246,7 +278,7 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Certifications & Awards"} />
             </ListItem>
-            <ListItem button key={"Skills"}>
+            <ListItem button onClick={handleOpenSkillModal} key={"Skills"}>
               <ListItemIcon>
                 <BuildIcon />
               </ListItemIcon>
@@ -341,12 +373,22 @@ function MyApp() {
         onChange={(index, name, value) => { editItemEdu(index, name, value) }}
         onAdd={() => {
           setEduList((prevList) => prevList.concat({
-            institute: "MIT, University",
-            study: "Diploma in Cryptocurrency",
+            institute: "New Education",
+            study: "Bachelor Degree in Business",
             startDate: "2016",
             endDate: "2020",
             score: "3.40 CGPA",
           }))
+        }}
+      />
+      <SkillModal
+        open={openSkillModal}
+        onClose={handleCloseSkillModal}
+        list={skillList}
+        onDelete={(index) => { removeItemSkill(index) }}
+        onChange={(index, name, value) => { editItemSkill(index, name, value) }}
+        onAdd={() => {
+          setSkillList((prevList) => prevList.concat({ skill: 'New Skill' }))
         }}
       />
     </div>

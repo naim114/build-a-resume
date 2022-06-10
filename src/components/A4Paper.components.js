@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, List, Typography, useTheme } from '@mui/material';
+import { List, Typography, useTheme } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
@@ -154,13 +154,14 @@ function A4Paper(props) {
                         <Grid
                             container
                             direction="row"
-                            justifyContent="space-between"
+                            justifyContent="flex-start"
                             alignItems="center"
                         >
-                            {skillList.map((item) => {
+                            {skillList.map((k, i) => {
                                 return (
                                     <SkillBadge
-                                        label={item}
+                                        key={i}
+                                        label={k['skill']}
                                     />
                                 );
                             })}
