@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Typography, useTheme } from '@mui/material';
+import { Container, List, Typography, useTheme } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
@@ -10,11 +10,13 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PlaceIcon from '@mui/icons-material/Place';
 import EducationListItem from './EducationListItem';
+import SkillBadge from './SkillBadge';
 
 function A4Paper(props) {
     const theme = useTheme();
 
     const eduList = props.eduList;
+    const skillList = props.skillList;
 
     return (
         <div>
@@ -72,8 +74,6 @@ function A4Paper(props) {
                         />
                         <List style={{ padding: 0 }}>
                             {eduList.map((key, value) => {
-                                // console.log(value + " " + eduList.length);
-
                                 return (
                                     <div key={value}>
                                         <EducationListItem
@@ -82,7 +82,7 @@ function A4Paper(props) {
                                             startDate={key['startDate']}
                                             endDate={key['endDate']}
                                             score={key['score']}
-                                            isLastArray={(value + 1) == eduList.length}
+                                            isLastArray={(value + 1) === eduList.length}
                                         />
 
                                     </div>
@@ -151,9 +151,20 @@ function A4Paper(props) {
                             {props.objective}
                         </Typography>
                         <BorderedSubtitle title="SKILLS" marginTop="20px" marginBottom="10px" />
-                        <Typography variant="p" component="p" textAlign={'justify'} color={'white'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-                        </Typography>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="center"
+                        >
+                            {skillList.map((item) => {
+                                return (
+                                    <SkillBadge
+                                        label={item}
+                                    />
+                                );
+                            })}
+                        </Grid>
                     </Grid>
                 </Grid>
             </Paper>

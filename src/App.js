@@ -104,7 +104,8 @@ function MyApp() {
     setOpenMain(false);
   };
 
-  // Default Text
+  // State Handling
+  // Personal Details
   const [txtImageURL, setTxtImageURL] = React.useState("https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg");
   const [txtName, setTxtName] = React.useState("Giannis Antetokoumpo Jay-Jay Okocha");
   const [txtRole, setTxtRole] = React.useState("Content Creator");
@@ -114,6 +115,7 @@ function MyApp() {
   const [txtBackground, setTxtBackground] = React.useState("Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. ");
   const [txtObjective, setTxtObjective] = React.useState("Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector.");
 
+  // Education
   const [eduList, setEduList] = React.useState([
     {
       institute: "MIT, University",
@@ -131,14 +133,14 @@ function MyApp() {
     }
   ]);
 
-  // remove item from education
+  // Remove item from education
   const removeItemEdu = (index) => {
     console.log("Deleting " + eduList[index]["institute"]);
     setEduList(eduList.filter((o, i) => index !== i));
     alert("Deleted " + eduList[index]["institute"]);
   };
 
-  // edit item from education
+  // Edit item from education
   const editItemEdu = (index, name, value) => {
     console.log("Editing " + eduList[index]["institute"]);
     const newList = eduList.map((k, v) => {
@@ -156,6 +158,9 @@ function MyApp() {
     });
     setEduList(newList);
   };
+
+  // Skills
+  const [skillList, setSkillList] = React.useState(['JavaScript', 'CSS', 'HTML', 'C++']);
 
   // Modal state
   // Personal Modal
@@ -301,6 +306,7 @@ function MyApp() {
               background={txtBackground}
               objective={txtObjective}
               eduList={eduList}
+              skillList={skillList}
             />
           </Container>
         </Main>
