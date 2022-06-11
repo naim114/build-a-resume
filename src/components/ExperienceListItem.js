@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Divider, ListItem, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 
-function EducationListItem(props) {
+function ExperienceListItem(props) {
     return (
         <ListItem style={{ padding: 0, marginBottom: 5 }}>
             <Container style={{ padding: 0 }}>
@@ -12,19 +12,17 @@ function EducationListItem(props) {
                     justifyContent="space-between"
                     alignItems="center"
                 >
-                    <Typography style={{ fontWeight: 'bold', fontSize: 12 }}>
-                        {props.institute}
+                    <Typography style={{ fontSize: 18 }}>
+                        {props.company}
                     </Typography>
                     <Typography style={{ fontStyle: 'italic', fontSize: 12 }}>
                         {props.startDate} - {props.endDate}
                     </Typography>
                 </Grid>
-                <Typography style={{ fontSize: 20 }}>
-                    {props.study}
+                <Typography style={{ fontStyle: 'italic', fontSize: 15 }}>
+                    {props.position}
                 </Typography>
-                <Typography style={{ fontSize: 15 }}>
-                    {props.score}
-                </Typography>
+                {<div dangerouslySetInnerHTML={{ __html: props.description }} />}
                 {props.isLastArray ?
                     null
                     : <Divider style={{ paddingTop: 5 }} />
@@ -34,4 +32,4 @@ function EducationListItem(props) {
     );
 }
 
-export default EducationListItem;
+export default ExperienceListItem;

@@ -11,11 +11,13 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PlaceIcon from '@mui/icons-material/Place';
 import EducationListItem from './EducationListItem';
 import SkillBadge from './SkillBadge';
+import ExperienceListItem from './ExperienceListItem';
 
 function A4Paper(props) {
     const theme = useTheme();
 
     const eduList = props.eduList;
+    const exeList = props.exeList;
     const skillList = props.skillList;
     const certRawHTML = props.certRawHTML;
 
@@ -97,9 +99,22 @@ function A4Paper(props) {
                             marginBottom="10px"
                             color={'white'}
                         />
-                        <Typography variant="p" component="p" textAlign={'justify'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
-                        </Typography>
+                        <List style={{ padding: 0 }}>
+                            {exeList.map((key, value) => {
+                                return (
+                                    <div key={value}>
+                                        <ExperienceListItem
+                                            company={key['company']}
+                                            position={key['position']}
+                                            startDate={key['startDate']}
+                                            endDate={key['endDate']}
+                                            description={key['description']}
+                                            isLastArray={(value + 1) === eduList.length}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </List>
                         <BorderedSubtitle
                             background={'#6b705c'}
                             title="CERTIFICATIONS & AWARDS"
@@ -113,7 +128,6 @@ function A4Paper(props) {
                         style={{
                             background: '#6b705c',
                             padding: '20px',
-                            // textAlign: 'center',
                         }}
                     >
                         <Avatar alt="Remy Sharp" src={props.imageURL} sx={{ height: 225, width: 225, }} />

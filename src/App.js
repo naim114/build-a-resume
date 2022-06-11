@@ -161,15 +161,37 @@ function MyApp() {
     setEduList(newList);
   };
 
+  // Experience
+  const [exeList, setExeList] = React.useState([
+    {
+      company: "Techno ABC",
+      position: "Senior Software Developer",
+      startDate: "Jun 2015",
+      endDate: "Dec 2017",
+      description:
+        `
+        <ul>    
+          <li>Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable</li>
+          <li>Keep the code quality high reviewing code from other developers and suggesting improvements</li>
+        </ul>
+      `,
+    },
+    {
+      company: "DEFZilla",
+      position: "Trainee Developer",
+      startDate: "May 2018",
+      endDate: "Jun 2018",
+      description:
+        `
+        <ul>    
+          <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
+          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+        </ul>
+      `,
+    },
+  ]);
+
   // Certifications & Awards
-  // const certRawHTML = `
-  //   <ul>    
-  //     <li>React and redux - A complete guide 2020 from Udemy</li>
-  //     <li>Agile and Scrum Master Certificate from Udacity</li>
-  //     <li>Best performer award for consistently exceeding the performance</li>
-  //     <li>Certificate of exceptional bug finder by XYZ client</li>
-  //   </ul>
-  // `;
   const [certRawHTML, setCertRawHTML] = React.useState(
     `
     <ul>    
@@ -365,6 +387,7 @@ function MyApp() {
               background={txtBackground}
               objective={txtObjective}
               eduList={eduList}
+              exeList={exeList}
               certRawHTML={certRawHTML}
               skillList={skillList}
             />
