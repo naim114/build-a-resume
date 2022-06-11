@@ -17,6 +17,7 @@ function A4Paper(props) {
 
     const eduList = props.eduList;
     const skillList = props.skillList;
+    const certRawHTML = props.certRawHTML;
 
     return (
         <div>
@@ -106,9 +107,7 @@ function A4Paper(props) {
                             marginBottom="10px"
                             color={'white'}
                         />
-                        <Typography variant="p" component="p" textAlign={'justify'}>
-                            {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus consequat rhoncus.In dui erat, cursus in suscipit id."}
-                        </Typography>
+                        {<div dangerouslySetInnerHTML={{ __html: certRawHTML }} />}
                     </Grid>
                     <Grid item xs={4}
                         style={{

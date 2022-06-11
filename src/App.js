@@ -38,6 +38,7 @@ import A4Paper from './components/A4Paper.components';
 import PersonalModal from './components/modal/PersonalModal';
 import EducationModal from './components/modal/EducationModal';
 import SkillModal from './components/modal/SkillModal';
+import CertificationModal from './components/modal/CertificationModal';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -160,6 +161,27 @@ function MyApp() {
     setEduList(newList);
   };
 
+  // Certifications & Awards
+  // const certRawHTML = `
+  //   <ul>    
+  //     <li>React and redux - A complete guide 2020 from Udemy</li>
+  //     <li>Agile and Scrum Master Certificate from Udacity</li>
+  //     <li>Best performer award for consistently exceeding the performance</li>
+  //     <li>Certificate of exceptional bug finder by XYZ client</li>
+  //   </ul>
+  // `;
+  const [certRawHTML, setCertRawHTML] = React.useState(
+    `
+    <ul>    
+      <li>React and redux - A complete guide 2020 from Udemy</li>
+      <li>Agile and Scrum Master Certificate from Udacity</li>
+      <li>Best performer award for consistently exceeding the performance</li>
+      <li>Certificate of exceptional bug finder by XYZ client</li>
+    </ul>
+  `
+  );
+
+
   // Skills
   const [skillList, setSkillList] = React.useState([{ skill: 'JavaScript' }, { skill: 'CSS' }, { skill: 'HTML' }, { skill: 'C++' }]);
 
@@ -199,6 +221,11 @@ function MyApp() {
   const [openEducationModal, setOpenEducationModal] = React.useState(false);
   const handleOpenEducationModal = () => setOpenEducationModal(true);
   const handleCloseEducationModal = () => setOpenEducationModal(false);
+
+  // Skill Modal
+  const [openCertModal, setOpenCertModal] = React.useState(false);
+  const handleOpenCertModal = () => setOpenCertModal(true);
+  const handleCloseCertModal = () => setOpenCertModal(false);
 
   // Skill Modal
   const [openSkillModal, setOpenSkillModal] = React.useState(false);
@@ -272,7 +299,7 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Experience"} />
             </ListItem>
-            <ListItem button key={"Certifications & Awards"}>
+            <ListItem button onClick={handleOpenCertModal} key={"Certifications & Awards"}>
               <ListItemIcon>
                 <EmojiEventsIcon />
               </ListItemIcon>
@@ -338,6 +365,7 @@ function MyApp() {
               background={txtBackground}
               objective={txtObjective}
               eduList={eduList}
+              certRawHTML={certRawHTML}
               skillList={skillList}
             />
           </Container>
@@ -380,6 +408,12 @@ function MyApp() {
             score: "3.40 CGPA",
           }))
         }}
+      />
+      <CertificationModal
+        open={openCertModal}
+        onClose={handleCloseCertModal}
+        rawHTML={certRawHTML}
+        onChange={(value) => { setCertRawHTML(value) }}
       />
       <SkillModal
         open={openSkillModal}
