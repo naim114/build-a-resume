@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme, ThemeProvider, createTheme, styled } from '@mui/material/styles';
-import { useReactToPrint } from "react-to-print";
+import { useReactToPrint, generateAndSavePDF } from "react-to-print";
 
 // Local Component
 import PaperLayout from './components/PaperLayout';
@@ -330,6 +330,7 @@ function MyApp() {
   }, []);
 
   const handleOnBeforeGetContent = React.useCallback(() => {
+    alert("Please turn on print backgrounds settings on your browser for background color");
     console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
     setLoading(true);
 
@@ -353,7 +354,8 @@ function MyApp() {
     onBeforeGetContent: handleOnBeforeGetContent,
     onBeforePrint: handleBeforePrint,
     onAfterPrint: handleAfterPrint,
-    removeAfterPrint: true
+    removeAfterPrint: true,
+    copyStyles: true,
   });
 
   React.useEffect(() => {
@@ -446,18 +448,6 @@ function MyApp() {
           </List>
           <Divider />
           <List>
-            <ListItem button key={"Zoom In"}>
-              <ListItemIcon>
-                <ZoomInIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Zoom In"} />
-            </ListItem>
-            <ListItem button key={"Zoom Out"}>
-              <ListItemIcon>
-                <ZoomOutIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Zoom Out"} />
-            </ListItem>
             <ListItem
               button
               key={"Reset"}
@@ -531,12 +521,6 @@ function MyApp() {
                 <RestartAltIcon />
               </ListItemIcon>
               <ListItemText primary={"Reset"} />
-            </ListItem>
-            <ListItem button key={"Download"}>
-              <ListItemIcon>
-                <DownloadIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Download"} />
             </ListItem>
             <ListItem button onClick={handlePrint} key={"Print"}>
               <ListItemIcon>

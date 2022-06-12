@@ -28,6 +28,8 @@ export default class PaperLayout extends React.Component {
                     style={{
                         width: '270mm',
                         height: '350mm',
+                        backgroundColor: 'white',
+                        color: 'black',
                     }}
                 >
                     <Grid container style={{ height: '100%' }}>
