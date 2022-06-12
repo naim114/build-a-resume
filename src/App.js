@@ -138,14 +138,14 @@ function MyApp() {
 
   // Remove item from education
   const removeItemEdu = (index) => {
-    console.log("Deleting " + eduList[index]["institute"]);
+    // console.log("Deleting " + eduList[index]["institute"]);
     setEduList(eduList.filter((o, i) => index !== i));
     alert("Deleted " + eduList[index]["institute"]);
   };
 
   // Edit item from education
   const editItemEdu = (index, name, value) => {
-    console.log("Editing " + eduList[index]["institute"]);
+    // console.log("Editing " + eduList[index]["institute"]);
     const newList = eduList.map((k, v) => {
       if (v === index) {
         const updatedItem = {
@@ -194,14 +194,14 @@ function MyApp() {
 
   // Remove item from experience
   const removeItemExp = (index) => {
-    console.log("Deleting " + expList[index]["company"]);
+    // console.log("Deleting " + expList[index]["company"]);
     setExpList(expList.filter((o, i) => index !== i));
     alert("Deleted " + expList[index]["company"]);
   };
 
   // Edit item from experience
   const editItemExp = (index, name, value) => {
-    console.log("Editing " + expList[index]["company"]);
+    // console.log("Editing " + expList[index]["company"]);
     const newList = expList.map((k, v) => {
       if (v === index) {
         const updatedItem = {
@@ -219,7 +219,7 @@ function MyApp() {
   };
 
   const editDescExp = (index, value) => {
-    console.log("Editing " + expList[index]["company"]);
+    // console.log("Editing " + expList[index]["company"]);
     const newList = expList.map((k, v) => {
       if (v === index) {
         const updatedItem = {
@@ -248,13 +248,12 @@ function MyApp() {
   `
   );
 
-
   // Skills
   const [skillList, setSkillList] = React.useState([{ skill: 'JavaScript' }, { skill: 'CSS' }, { skill: 'HTML' }, { skill: 'C++' }]);
 
   // Editing item in skill
   const editItemSkill = (index, name, value) => {
-    console.log("Editing " + skillList[index]["skill"]);
+    // console.log("Editing " + skillList[index]["skill"]);
     const newList = skillList.map((k, v) => {
       if (v === index) {
         const updatedItem = {
@@ -273,7 +272,7 @@ function MyApp() {
 
   // Remove item from skill
   const removeItemSkill = (index) => {
-    console.log("Deleting " + skillList[index]["skill"]);
+    // console.log("Deleting " + skillList[index]["skill"]);
     setSkillList(skillList.filter((o, i) => index !== i));
     alert("Deleted " + skillList[index]["skill"]);
   };
@@ -398,7 +397,75 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Zoom Out"} />
             </ListItem>
-            <ListItem button key={"Reset"}>
+            <ListItem
+              button
+              key={"Reset"}
+              onClick={() => {
+                setTxtImageURL("https://iasbaba.com/wp-content/uploads/2022/03/61bddfe00d030_default_man_photo.jpg");
+                setTxtName("Giannis Antetokoumpo Jay-Jay Okocha");
+                setTxtRole("Content Creator");
+                setTxtPhone("+6 011-1122 3456");
+                setTxtEmail("jayjayokocha@arsenal.com");
+                setTxtLocation("Jalan Tandok, KL");
+                setTxtBackground("Jay-Jay Okocha, is a Nigerian former professional footballer. He played 73 times for the Nigeria national team between 1993 and 2006, scoring 14 times, and was a member of three FIFA World Cup squads. ");
+                setTxtObjective("Looking for a challenging role in a reputable organization to utilize my technical, database, and management skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the IT sector.");
+                setEduList([
+                  {
+                    institute: "MIT, University",
+                    study: "Diploma in Cryptocurrency",
+                    startDate: "2016",
+                    endDate: "2020",
+                    score: "3.40 CGPA",
+                  },
+                  {
+                    institute: "College Al-Gustoo",
+                    study: "Degree in Food & Beverages",
+                    startDate: "2020",
+                    endDate: "2021",
+                    score: "2.10 CGPA",
+                  }
+                ]);
+                setExpList([
+                  {
+                    company: "Techno ABC",
+                    position: "Senior Software Developer",
+                    startDate: "Jun 2015",
+                    endDate: "Dec 2017",
+                    description:
+                      `
+                        <ul>    
+                          <li>Use my extensive experience with front end development to define the structure and components for the project, making sure they are reusable</li>
+                          <li>Keep the code quality high reviewing code from other developers and suggesting improvements</li>
+                        </ul>
+                      `,
+                  },
+                  {
+                    company: "DEFZilla",
+                    position: "Trainee Developer",
+                    startDate: "May 2018",
+                    endDate: "Jun 2018",
+                    description:
+                      `
+                        <ul>    
+                          <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
+                          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+                        </ul>
+                      `,
+                  },
+                ]);
+                setCertRawHTML(
+                  `
+                    <ul>    
+                      <li>React and redux - A complete guide 2020 from Udemy</li>
+                      <li>Agile and Scrum Master Certificate from Udacity</li>
+                      <li>Best performer award for consistently exceeding the performance</li>
+                      <li>Certificate of exceptional bug finder by XYZ client</li>
+                    </ul>
+                  `
+                );
+                setSkillList([{ skill: 'JavaScript' }, { skill: 'CSS' }, { skill: 'HTML' }, { skill: 'C++' }]);
+              }}
+            >
               <ListItemIcon>
                 <RestartAltIcon />
               </ListItemIcon>
