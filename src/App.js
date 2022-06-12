@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { useTheme, ThemeProvider, createTheme, styled } from '@mui/material/styles';
+import { useReactToPrint } from "react-to-print";
+
+// Local Component
+import PaperLayout from './components/PaperLayout';
 
 // Icon
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -34,7 +38,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import A4Paper from './components/A4Paper.components';
+
+// Modal
 import PersonalModal from './components/modal/PersonalModal';
 import EducationModal from './components/modal/EducationModal';
 import SkillModal from './components/modal/SkillModal';
@@ -91,6 +96,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 function MyApp() {
+  // Get Theme
   const theme = useTheme();
 
   // Dark/Light Mode
@@ -99,10 +105,12 @@ function MyApp() {
   // Main Drawer
   const [openDrawer, setOpenMain] = React.useState(false);
 
+  // Open Drawer
   const handleMainDrawerOpen = () => {
     setOpenMain(true);
   };
 
+  // Close Drawer
   const handleMainDrawerClose = () => {
     setOpenMain(false);
   };
@@ -186,7 +194,7 @@ function MyApp() {
         `
         <ul>    
           <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
-          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team and helping with technical questions</li>
         </ul>
       `,
     },
@@ -302,6 +310,56 @@ function MyApp() {
   const [openSkillModal, setOpenSkillModal] = React.useState(false);
   const handleOpenSkillModal = () => setOpenSkillModal(true);
   const handleCloseSkillModal = () => setOpenSkillModal(false);
+
+  // Print 
+  const componentRef = React.useRef(null);
+
+  const onBeforeGetContentResolve = React.useRef(null);
+
+  const [loading, setLoading] = React.useState(false);
+
+  const handleAfterPrint = React.useCallback(() => {
+    console.log("`onAfterPrint` called"); // tslint:disable-line no-console
+  }, []);
+
+  const handleBeforePrint = React.useCallback(() => {
+    console.log("`onBeforePrint` called"); // tslint:disable-line no-console
+  }, []);
+
+  const handleOnBeforeGetContent = React.useCallback(() => {
+    console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
+    setLoading(true);
+
+    return new Promise((resolve) => {
+      onBeforeGetContentResolve.current = resolve;
+
+      setTimeout(() => {
+        setLoading(false);
+        resolve();
+      }, 2000);
+    });
+  }, [setLoading]);
+
+  const reactToPrintContent = React.useCallback(() => {
+    return componentRef.current;
+  }, [componentRef.current]);
+
+  const handlePrint = useReactToPrint({
+    content: reactToPrintContent,
+    documentTitle: "Build-a-resume",
+    onBeforeGetContent: handleOnBeforeGetContent,
+    onBeforePrint: handleBeforePrint,
+    onAfterPrint: handleAfterPrint,
+    removeAfterPrint: true
+  });
+
+  React.useEffect(() => {
+    if (
+      typeof onBeforeGetContentResolve.current === "function"
+    ) {
+      onBeforeGetContentResolve.current();
+    }
+  }, [onBeforeGetContentResolve.current]);
 
   return (
     <div>
@@ -448,7 +506,7 @@ function MyApp() {
                       `
                         <ul>    
                           <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
-                          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+                          <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team and helping with technical questions</li>
                         </ul>
                       `,
                   },
@@ -477,7 +535,7 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Download"} />
             </ListItem>
-            <ListItem button key={"Print"}>
+            <ListItem button onClick={handlePrint} key={"Print"}>
               <ListItemIcon>
                 <PrintIcon />
               </ListItemIcon>
@@ -494,7 +552,10 @@ function MyApp() {
               justifyContent: 'center',
             }}
           >
-            <A4Paper
+            {loading && <p className="indicator">onBeforeGetContent: Loading...</p>}
+            <PaperLayout
+              ref={componentRef}
+              theme={theme}
               imageURL={txtImageURL}
               name={txtName}
               role={txtRole}
@@ -567,7 +628,7 @@ function MyApp() {
               `
               <ul>    
                 <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
-                <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+                <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team and helping with technical questions</li>
               </ul>
             `,
           }))
