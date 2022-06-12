@@ -39,6 +39,7 @@ import PersonalModal from './components/modal/PersonalModal';
 import EducationModal from './components/modal/EducationModal';
 import SkillModal from './components/modal/SkillModal';
 import CertificationModal from './components/modal/CertificationModal';
+import ExperienceModal from './components/modal/ExperienceModal';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -162,7 +163,7 @@ function MyApp() {
   };
 
   // Experience
-  const [exeList, setExeList] = React.useState([
+  const [expList, setExpList] = React.useState([
     {
       company: "Techno ABC",
       position: "Senior Software Developer",
@@ -190,6 +191,50 @@ function MyApp() {
       `,
     },
   ]);
+
+  // Remove item from experience
+  const removeItemExp = (index) => {
+    console.log("Deleting " + expList[index]["company"]);
+    setExpList(expList.filter((o, i) => index !== i));
+    alert("Deleted " + expList[index]["company"]);
+  };
+
+  // Edit item from experience
+  const editItemExp = (index, name, value) => {
+    console.log("Editing " + expList[index]["company"]);
+    const newList = expList.map((k, v) => {
+      if (v === index) {
+        const updatedItem = {
+          ...k,
+        };
+
+        updatedItem[name] = value;
+
+        return updatedItem;
+      }
+
+      return k;
+    });
+    setExpList(newList);
+  };
+
+  const editDescExp = (index, value) => {
+    console.log("Editing " + expList[index]["company"]);
+    const newList = expList.map((k, v) => {
+      if (v === index) {
+        const updatedItem = {
+          ...k,
+        };
+
+        updatedItem["description"] = value;
+
+        return updatedItem;
+      }
+
+      return k;
+    });
+    setExpList(newList);
+  };
 
   // Certifications & Awards
   const [certRawHTML, setCertRawHTML] = React.useState(
@@ -243,6 +288,11 @@ function MyApp() {
   const [openEducationModal, setOpenEducationModal] = React.useState(false);
   const handleOpenEducationModal = () => setOpenEducationModal(true);
   const handleCloseEducationModal = () => setOpenEducationModal(false);
+
+  // Experience Modal
+  const [openExpModal, setOpenExpModal] = React.useState(false);
+  const handleOpenExpModal = () => setOpenExpModal(true);
+  const handleCloseExpModal = () => setOpenExpModal(false);
 
   // Skill Modal
   const [openCertModal, setOpenCertModal] = React.useState(false);
@@ -315,7 +365,7 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Education"} />
             </ListItem>
-            <ListItem button key={"Experience"}>
+            <ListItem button onClick={handleOpenExpModal} key={"Experience"}>
               <ListItemIcon>
                 <WorkIcon />
               </ListItemIcon>
@@ -387,7 +437,7 @@ function MyApp() {
               background={txtBackground}
               objective={txtObjective}
               eduList={eduList}
-              exeList={exeList}
+              expList={expList}
               certRawHTML={certRawHTML}
               skillList={skillList}
             />
@@ -432,12 +482,38 @@ function MyApp() {
           }))
         }}
       />
+      {/* Experience Modal */}
+      <ExperienceModal
+        open={openExpModal}
+        onClose={handleCloseExpModal}
+        list={expList}
+        onDelete={(index) => { removeItemExp(index) }}
+        onChange={(index, name, value) => { editItemExp(index, name, value) }}
+        onDescriptionChange={(index, value) => editDescExp(index, value)}
+        onAdd={() => {
+          setExpList((prevList) => prevList.concat({
+            company: "New Company",
+            position: "Trainee Manager",
+            startDate: "May 2018",
+            endDate: "Jun 2018",
+            description:
+              `
+              <ul>    
+                <li>Develop web applications based on Sharepoint, Drupal 8 and Episerver</li>
+                <li>Lead a team of 10 front end developers, giving support to the client's multi-cultural team, providing feedback, clarifying requirements and helping with technical questions</li>
+              </ul>
+            `,
+          }))
+        }}
+      />
+      {/* Certification & Awards Modal */}
       <CertificationModal
         open={openCertModal}
         onClose={handleCloseCertModal}
         rawHTML={certRawHTML}
         onChange={(value) => { setCertRawHTML(value) }}
       />
+      {/* Skill Modal */}
       <SkillModal
         open={openSkillModal}
         onClose={handleCloseSkillModal}

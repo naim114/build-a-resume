@@ -17,7 +17,7 @@ function A4Paper(props) {
     const theme = useTheme();
 
     const eduList = props.eduList;
-    const exeList = props.exeList;
+    const expList = props.expList;
     const skillList = props.skillList;
     const certRawHTML = props.certRawHTML;
 
@@ -100,7 +100,7 @@ function A4Paper(props) {
                             color={'white'}
                         />
                         <List style={{ padding: 0 }}>
-                            {exeList.map((key, value) => {
+                            {expList.map((key, value) => {
                                 return (
                                     <div key={value}>
                                         <ExperienceListItem
@@ -109,7 +109,7 @@ function A4Paper(props) {
                                             startDate={key['startDate']}
                                             endDate={key['endDate']}
                                             description={key['description']}
-                                            isLastArray={(value + 1) === eduList.length}
+                                            isLastArray={(value + 1) === expList.length}
                                         />
                                     </div>
                                 );
