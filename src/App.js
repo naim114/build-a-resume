@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme, ThemeProvider, createTheme, styled } from '@mui/material/styles';
-import { useReactToPrint, generateAndSavePDF } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 
 // Local Component
 import PaperLayout from './components/PaperLayout';
@@ -15,10 +15,7 @@ import BuildIcon from '@mui/icons-material/Build';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import DownloadIcon from '@mui/icons-material/Download';
 import PrintIcon from '@mui/icons-material/Print';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
@@ -39,7 +36,6 @@ import {
   ListItemText,
   Grid,
   LinearProgress,
-  CircularProgress,
 } from '@mui/material';
 
 // Modal
