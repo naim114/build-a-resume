@@ -37,6 +37,9 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Grid,
+  LinearProgress,
+  CircularProgress,
 } from '@mui/material';
 
 // Modal
@@ -552,23 +555,37 @@ function MyApp() {
               justifyContent: 'center',
             }}
           >
-            {loading && <p className="indicator">onBeforeGetContent: Loading...</p>}
-            <PaperLayout
-              ref={componentRef}
-              theme={theme}
-              imageURL={txtImageURL}
-              name={txtName}
-              role={txtRole}
-              phone={txtPhone}
-              email={txtEmail}
-              location={txtLocation}
-              background={txtBackground}
-              objective={txtObjective}
-              eduList={eduList}
-              expList={expList}
-              certRawHTML={certRawHTML}
-              skillList={skillList}
-            />
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {
+                loading
+                &&
+                <Box sx={{ width: '85%', paddingBottom: 2 }}>
+                  <LinearProgress />
+                </Box>
+              }
+              <PaperLayout
+                ref={componentRef}
+                theme={theme}
+                imageURL={txtImageURL}
+                name={txtName}
+                role={txtRole}
+                phone={txtPhone}
+                email={txtEmail}
+                location={txtLocation}
+                background={txtBackground}
+                objective={txtObjective}
+                eduList={eduList}
+                expList={expList}
+                certRawHTML={certRawHTML}
+                skillList={skillList}
+              />
+            </Grid>
+
           </Container>
         </Main>
       </Box>
