@@ -524,6 +524,17 @@ function MyApp() {
               </ListItemIcon>
               <ListItemText primary={"Print"} />
             </ListItem>
+            <Divider />
+            <Typography
+              style={{
+                textAlign: 'center',
+                fontSize: 12,
+                color: 'gray',
+                padding: 10
+              }}
+            >
+              {"Made by https://naim114.github.io"}
+            </Typography>
           </List>
         </Drawer>
         <Main open={openDrawer}>
