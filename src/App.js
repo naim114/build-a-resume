@@ -36,6 +36,7 @@ import {
   ListItemText,
   Grid,
   LinearProgress,
+  Link,
 } from '@mui/material';
 
 // Modal
@@ -525,15 +526,24 @@ function MyApp() {
               <ListItemText primary={"Print"} />
             </ListItem>
             <Divider />
+
             <Typography
               style={{
                 textAlign: 'center',
-                fontSize: 12,
-                color: 'gray',
-                padding: 10
               }}
             >
-              {"Made by https://naim114.github.io"}
+              <Link
+                href="https://github.com/naim114"
+                style={{
+                  textAlign: 'center',
+                  fontSize: 12,
+                  color: 'gray',
+                  padding: 10,
+                  textDecoration: 'none',
+                }}
+              >
+                Made by naim114
+              </Link>
             </Typography>
           </List>
         </Drawer>
